@@ -1,16 +1,101 @@
-# React + Vite
+# 🐾 Sistema de Gestión Veterinaria
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación full-stack desarrollada como proyecto integrador, que permite administrar **clientes y mascotas** de una veterinaria.  
+Incluye frontend en **React + Vite**, backend en **Node.js + Express + MongoDB**, y consumo de API real sin mocks.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologías utilizadas
 
-## React Compiler
+| Área | Tecnologías |
+|------|-------------|
+| **Frontend** | React + Vite, React Router DOM, Axios, Material UI (MUI), DataGrid, Hooks (useState, useEffect, useCallback, memo) |
+| **Backend** | Node.js, Express, Mongoose, MongoDB Atlas |
+| **Extras** | Dark / Light Mode, Responsive Design, Fetch real de API, Validaciones, Notificaciones |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✅ Funcionalidades
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 👥 Módulo Clientes
+✔️ Listado con DataGrid  
+✔️ Crear / Editar / Eliminar clientes  
+✔️ Ver detalle individual  
+✔️ Búsqueda en tiempo real  
+
+### 🐶 Módulo Mascotas
+✔️ Listado con DataGrid  
+✔️ Crear / Editar / Eliminar mascotas  
+✔️ Relación mascota → cliente  
+✔️ Búsqueda y filtros  
+
+### 🌓 Tema visual
+✔️ Modo Claro / Oscuro con persistencia
+
+### 📱 Responsive
+✔️ Desktop + Tablets + Mobile  
+✔️ Navbar adaptativa
+
+---
+
+## 📂 Estructura del proyecto
+```plaintext
+src
+├── components
+│   ├── Loader.jsx
+│   └── Navbar.jsx
+├── context
+│   ├── ColorModeContext.jsx
+│   └── NotificationContext.jsx
+├── hooks
+│   ├── useFetch.js
+│   └── useIsMobile.js
+├── pages
+│   ├── Home.jsx
+│   ├── Clientes
+│   │   ├── ClientesPage.jsx
+│   │   ├── ClienteDetalle.jsx
+│   │   └── ClienteForm.jsx
+│   └── Mascotas
+│       ├── MascotasPage.jsx
+│       ├── MascotaDetalle.jsx
+│       └── MascotaForm.jsx
+├── services
+│   ├── apiClientes.js
+│   └── apiMascotas.js
+├── styles
+│   ├── globals.css
+│   └── theme.js
+├── App.jsx
+├── main.jsx
+└── vite.config.js
+
+## ✅ Funcionalidades principales
+
+✔ CRUD de Clientes  
+✔ CRUD de Mascotas  
+✔ Relación Cliente ↔ Mascota  
+✔ Filtros y búsquedas en tablas  
+✔ Modo **Dark / Light**  
+✔ Diseño responsive (Desktop, Tablet, Mobile)  
+✔ Notificaciones globales (MUI Snackbar)  
+✔ Hooks optimizados (`useCallback`, `useMemo`, `useFetch`)  
+
+---
+
+## 📦 Instalación y ejecución
+
+### 1️⃣ Clonar el repositorio
+
+`` git clone https://github.com/valedg12/App-gestion-veterinaria.git `` 
+
+`` cd App-gestion-veterinaria `` 
+
+### 2️⃣ Instalar dependencias
+
+`` npm install `` 
+
+### 3️⃣ Ejecutar el proyecto
+
+`` npm run dev `` 
+
