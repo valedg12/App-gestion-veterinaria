@@ -1,13 +1,14 @@
+
 import axios from "./axiosConfig.js";
 
 export const getMascotas = async () => {
   const { data } = await axios.get("/mascotas");
-  return data;
+  return data; 
 };
 
 export const getMascotaById = async (id) => {
   const { data } = await axios.get(`/mascotas/${id}`);
-  return data;
+  return data; 
 };
 
 export const createMascota = async (mascota) => {
@@ -20,12 +21,7 @@ export const updateMascota = async (id, mascota) => {
   return data;
 };
 
-export const eliminarMascota = async (id) => {
+export const deleteMascota = async (id) => {
   const { data } = await axios.delete(`/mascotas/${id}`);
   return data;
 };
-
-export const obtenerMascotas = getMascotas;
-export const obtenerMascota = getMascotaById;
-export const crearMascota = createMascota;
-export const actualizarMascota = updateMascota;

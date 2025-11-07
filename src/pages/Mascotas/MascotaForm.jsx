@@ -1,93 +1,146 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Box, Paper, TextField, Button, Typography, MenuItem } from "@mui/material";
-import { createMascota, getMascotaById, updateMascota } from "../../services/apiMascotas";
+import { createMascota, updateMascota, getMascotaById } from "../../services/apiMascotas";
 import { getClientes } from "../../services/apiClientes";
 import { useNotification } from "../../context/NotificationContext";
-
-const emptyForm = { nombre: "", especie: "", raza: "", edad: "", cliente_id: "" };
+import "../../styles/tableStyles.css";
 
 export default function MascotaForm() {
   const { id } = useParams();
   const isEdit = Boolean(id);
   const navigate = useNavigate();
-  const { showNotification } = useNotification();
-  const [form, setForm] = useState(emptyForm);
-  const [saving, setSaving] = useState(false);
+  const { notify } = useNotification();
+
+  const [form, setForm] = useState({
+    nombre: "",
+    especie: "",
+    raza: "",
+    edad: "",
+    cliente: "",
+  });
+
   const [clientes, setClientes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getClientes().then(setClientes);
-  }, []);
+    const fetchData = async () => {
+      try {
+        const clientesData = await getClientes();
+        setClientes(clientesData);
 
-  useEffect(() => {
-    if (!isEdit) return;
-    (async () => {
-      const data = await getMascotaById(id);
-      setForm({
-        nombre: data?.nombre ?? "",
-        especie: data?.especie ?? "",
-        raza: data?.raza ?? "",
-        edad: data?.edad ?? "",
-        cliente_id: data?.cliente_id?._id || data?.cliente_id || "",
-      });
-    })();
+        if (isEdit) {
+          const mascotaData = await getMascotaById(id);
+          setForm({
+            nombre: mascotaData.nombre || "",
+            especie: mascotaData.especie || "",
+            raza: mascotaData.raza || "",
+            edad: mascotaData.edad || "",
+            cliente: mascotaData?.cliente?._id || "",
+          });
+        }
+      } catch (error) {
+        notify("Error cargando datos", "error");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
   }, [id, isEdit]);
 
-  const onChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setForm((f) => ({ ...f, [name]: value }));
-  }, []);
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-  const onSubmit = useCallback(async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSaving(true);
     try {
-      const payload = { ...form, edad: Number(form.edad) || 0 };
       if (isEdit) {
-        await updateMascota(id, payload);
-        showNotification("Mascota actualizada", "success");
+        await updateMascota(id, form);
+        notify("Mascota actualizada con éxito ✅", "success");
       } else {
-        await createMascota(payload);
-        showNotification("Mascota creada", "success");
+        await createMascota(form);
+        notify("Mascota creada con éxito 🐾", "success");
       }
       navigate("/mascotas");
-    } catch (err) {
-      showNotification("Error guardando mascota", "error");
-    } finally {
-      setSaving(false);
+    } catch (error) {
+      notify("Error al guardar la mascota ❌", "error");
     }
-  }, [form, id, isEdit, navigate, showNotification]);
+  };
+
+  if (loading) return <div className="empty">Cargando datos...</div>;
 
   return (
-    <Box sx={{ p: 3 }}>
-      <Typography variant="h5" gutterBottom>{isEdit ? "Editar Mascota" : "Nueva Mascota"}</Typography>
+    <div className="page">
+      <div className="page-header">
+        <h2>{isEdit ? "Editar Mascota" : "Nueva Mascota"}</h2>
+      </div>
 
-      <Paper component="form" onSubmit={onSubmit} sx={{ p: 3, display: "grid", gap: 2, maxWidth: 520 }}>
-        <TextField label="Nombre" name="nombre" value={form.nombre} onChange={onChange} required />
-        <TextField label="Especie" name="especie" value={form.especie} onChange={onChange} required />
-        <TextField label="Raza" name="raza" value={form.raza} onChange={onChange} />
-        <TextField label="Edad" name="edad" value={form.edad} onChange={onChange} type="number" inputProps={{ min: 0 }} />
-        <TextField
-          select
-          label="Cliente"
-          name="cliente_id"
-          value={form.cliente_id}
-          onChange={onChange}
-          required
-        >
-          {clientes.map((c) => (
-            <MenuItem key={c._id} value={c._id}>
-              {c.nombre} — {c.email}
-            </MenuItem>
-          ))}
-        </TextField>
+      <div className="card form-card">
+        <form onSubmit={handleSubmit} className="form-grid">
+          <input
+            className="input"
+            name="nombre"
+            placeholder="Nombre"
+            value={form.nombre}
+            onChange={handleChange}
+            required
+          />
 
-        <Box sx={{ display: "flex", gap: 1 }}>
-          <Button type="submit" variant="contained" disabled={saving}>{isEdit ? "Guardar cambios" : "Crear"}</Button>
-          <Button variant="outlined" onClick={() => navigate("/mascotas")}>Cancelar</Button>
-        </Box>
-      </Paper>
-    </Box>
+          <input
+            className="input"
+            name="especie"
+            placeholder="Especie"
+            value={form.especie}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            className="input"
+            name="raza"
+            placeholder="Raza"
+            value={form.raza}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            className="input"
+            name="edad"
+            type="number"
+            placeholder="Edad"
+            value={form.edad}
+            onChange={handleChange}
+          />
+
+          <select
+            className="input"
+            name="cliente"
+            value={form.cliente}
+            onChange={handleChange}
+          >
+            <option value="">Sin asignar</option>
+            {clientes.map((c) => (
+              <option key={c._id} value={c._id}>
+                {c.nombre}
+              </option>
+            ))}
+          </select>
+
+          <div className="form-buttons">
+            <button type="submit" className="btn btn-primary">
+              {isEdit ? "Guardar Cambios" : "Crear Mascota"}
+            </button>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={() => navigate("/mascotas")}
+            >
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
