@@ -92,27 +92,32 @@ src
 
 ## Home
 
-<img width="1918" height="838" alt="image" src="https://github.com/user-attachments/assets/e489face-641c-42d8-84c7-41ba9eff14c2" />
+<img width="1903" height="833" alt="image" src="https://github.com/user-attachments/assets/81e4db5b-3d5e-45cb-aad8-d8e87c11cd99" />
+
 
 
 ## Clientes 
 
-<img width="1916" height="839" alt="image" src="https://github.com/user-attachments/assets/340bd9d7-ea83-4a5f-9ada-c378fffa9869" />
+<img width="1907" height="828" alt="image" src="https://github.com/user-attachments/assets/e23f88d3-66fe-4107-ae7d-56fc9b5dc50e" />
+
 
 
 ## Mascotas
 
-<img width="1919" height="834" alt="image" src="https://github.com/user-attachments/assets/40e2ab97-238b-47b1-a799-7b21b9dd9664" />
+<img width="1919" height="818" alt="image" src="https://github.com/user-attachments/assets/a920366d-9379-4ac7-886d-fa86ce1ddbbb" />
+
 
 
 ## Modo Dark
 
-<img width="1915" height="870" alt="image" src="https://github.com/user-attachments/assets/e92f9b48-3ad8-46f1-b47e-52539bb85971" />
+<img width="1913" height="798" alt="image" src="https://github.com/user-attachments/assets/43febaf9-cf50-488a-a591-ad041fc45998" />
+
 
 
 ## Vista Mobile
 
-<img width="728" height="761" alt="image" src="https://github.com/user-attachments/assets/7262dd40-1456-4a84-a34c-891e45971561" />
+<img width="743" height="769" alt="image" src="https://github.com/user-attachments/assets/d1d5ee53-29df-4f9a-bc7d-d670d03cd948" />
+
 
 
 ---
