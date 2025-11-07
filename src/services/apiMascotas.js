@@ -1,26 +1,31 @@
-import api from "./axiosConfig";
+import axios from "./axiosConfig.js";
 
 export const getMascotas = async () => {
-  const { data } = await api.get("/mascotas");
+  const { data } = await axios.get("/mascotas");
   return data;
 };
 
 export const getMascotaById = async (id) => {
-  const { data } = await api.get(`/mascotas/${id}`);
+  const { data } = await axios.get(`/mascotas/${id}`);
   return data;
 };
 
 export const createMascota = async (mascota) => {
-  const { data } = await api.post("/mascotas", mascota);
+  const { data } = await axios.post("/mascotas", mascota);
   return data;
 };
 
-export const updateMascota = async (id, mascotaActualizada) => {
-  const { data } = await api.put(`/mascotas/${id}`, mascotaActualizada);
+export const updateMascota = async (id, mascota) => {
+  const { data } = await axios.put(`/mascotas/${id}`, mascota);
   return data;
 };
 
-export const deleteMascota = async (id) => {
-  const { data } = await api.delete(`/mascotas/${id}`);
+export const eliminarMascota = async (id) => {
+  const { data } = await axios.delete(`/mascotas/${id}`);
   return data;
 };
+
+export const obtenerMascotas = getMascotas;
+export const obtenerMascota = getMascotaById;
+export const crearMascota = createMascota;
+export const actualizarMascota = updateMascota;

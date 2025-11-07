@@ -81,6 +81,7 @@ src
 │   └── apiMascotas.js
 ├── styles
 │   ├── globals.css
+    ├── tableStyles.css
 │   └── theme.js
 ├── App.jsx
 ├── main.jsx
@@ -113,3 +114,6 @@ src
 
 `` https://api-veterinaria-orcin.vercel.app/api `` 
 `` https://github.com/valedg12/api_veterinaria  `` 
+
+
+
