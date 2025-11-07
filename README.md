@@ -38,6 +38,22 @@ Incluye frontend en **React + Vite**, backend en **Node.js + Express + MongoDB**
 
 ---
 
+## 📦 Instalación y ejecución
+
+### 1️⃣ Clonar el repositorio
+
+`` git clone https://github.com/valedg12/App-gestion-veterinaria.git `` 
+
+`` cd App-gestion-veterinaria `` 
+
+### 2️⃣ Instalar dependencias
+
+`` npm install `` 
+
+### 3️⃣ Ejecutar el proyecto
+
+`` npm run dev `` 
+
 ## 📂 Estructura del proyecto
 ```plaintext
 src
@@ -70,32 +86,24 @@ src
 ├── main.jsx
 └── vite.config.js
 
-## ✅ Funcionalidades principales
-
-✔ CRUD de Clientes  
-✔ CRUD de Mascotas  
-✔ Relación Cliente ↔ Mascota  
-✔ Filtros y búsquedas en tablas  
-✔ Modo **Dark / Light**  
-✔ Diseño responsive (Desktop, Tablet, Mobile)  
-✔ Notificaciones globales (MUI Snackbar)  
-✔ Hooks optimizados (`useCallback`, `useMemo`, `useFetch`)  
-
+```
 ---
 
-## 📦 Instalación y ejecución
+## Home
 
-### 1️⃣ Clonar el repositorio
+<img width="1915" height="868" alt="image" src="https://github.com/user-attachments/assets/45d6cd43-16f1-4871-9d73-80a5585a0bd1" />
 
-`` git clone https://github.com/valedg12/App-gestion-veterinaria.git `` 
+## Clientes 
+<img width="1917" height="854" alt="image" src="https://github.com/user-attachments/assets/0b3f59a1-7323-4a27-bd62-ee8e0b1dcd55" />
 
-`` cd App-gestion-veterinaria `` 
+## Mascotas
 
-### 2️⃣ Instalar dependencias
+<img width="1919" height="841" alt="image" src="https://github.com/user-attachments/assets/08a9f22c-1a67-4daa-8ec5-1ac88c20224b" />
 
-`` npm install `` 
+## Modo Dark
 
-### 3️⃣ Ejecutar el proyecto
+<img width="1917" height="861" alt="image" src="https://github.com/user-attachments/assets/d3186703-c412-4748-bd1a-bb3e71f86c5a" />
 
-`` npm run dev `` 
+## Vista Mobile
 
+<img width="712" height="751" alt="image" src="https://github.com/user-attachments/assets/d9a5e5e9-9c9b-4264-a977-8e4eba90fe41" />
